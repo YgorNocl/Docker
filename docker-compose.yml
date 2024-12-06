@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  node_app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      MONGO_URI: mongodb://mongo_db:27017/my_database
+    depends_on:
+      - mongo_db
+
+  mongo_db:
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
